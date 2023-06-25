@@ -7,8 +7,8 @@
 | encrypted_password  | string     | null: false,      |
 | lastname1           | string     | null: false, 全角      |
 | firstname1          | string     | null: false, 全角、        |
-| lastname1           | string     | null: false, 全角、カタカナ |
-| firstname1          | string     | null: false, 全角、カタカナ |
+| lastname2          | string     | null: false, 全角、カタカナ |
+| firstname2          | string     | null: false, 全角、カタカナ |
 | birth               | date       | null: false, |
 
 
