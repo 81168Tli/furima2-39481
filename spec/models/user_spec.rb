@@ -11,7 +11,6 @@ RSpec.describe User, type: :model do
         it "全ての値が存在すれば登録できる" do
           expect(@user).to be_valid
       end
-      end
 
 
       context '新規登録できない場合' do
