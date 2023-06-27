@@ -6,10 +6,10 @@ FactoryBot.define do
     password              {Faker::Internet.password(min_length: 6)}
     password_confirmation {password}
 
-    lastname1               {Faker::Name.last_name.initials(number: 2)}
-    firstname1              {Faker::Name.first_name.initials(number: 2)}
-    lastname2               {Faker::Name.last_name.initials(number: 2)}
-    firstname2              {Faker::Name.first_name.initials(number: 2)}
+    lastname1              { "山田" }
+    firstname1             { "太郎" }
+    lastname2              { "ヤマダ" }
+    firstname2             { "タロウ" }
     birth                   {Date.new(1990, 1, 1) }
 
     

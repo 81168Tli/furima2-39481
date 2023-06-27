@@ -11,5 +11,17 @@ class User < ApplicationRecord
          validates :firstname2, presence: true, format: { with: /\A[ァ-ヶー－]+\z/}
          validates :birth, presence: true
 
+         validate :password_complexity
+
+       
+         private
+       
+         def password_complexity
+           return if password.blank? || password.match?(/\A(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+\z/)
+           errors.add(:password, "must include at least one letter and one digit")
+         end
+
+        
+
 
 end
