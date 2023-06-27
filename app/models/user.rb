@@ -21,7 +21,5 @@ class User < ApplicationRecord
            errors.add(:password, "must include at least one letter and one digit")
          end
 
-        
-
 
 end
