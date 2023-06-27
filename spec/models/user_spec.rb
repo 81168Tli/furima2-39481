@@ -40,7 +40,6 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Email is invalid')
       end
 
-      end
 
       it "パスワードが必要なこと" do
         @user.password = ''
@@ -109,8 +108,6 @@ RSpec.describe User, type: :model do
       end
 
       it "お名前カナ(全角)は、全角（カタカナ）での入力が必須であること " do
-        @user.lastname2 = 'てすと'
-        @user.firstname2 = 'てすと'
         @user.valid?
         expect(@user.errors.full_messages).to include("Lastname2 is invalid","Firstname2 is invalid")
 
@@ -125,7 +122,6 @@ RSpec.describe User, type: :model do
 
 
 
-    end
   end
 
 
