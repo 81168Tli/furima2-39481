@@ -83,19 +83,31 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
 
-      it "お名前(全角)は、名字と名前がそれぞれ必須であること " do
+      it "お名前(全角)は、名字が必須であること " do
         @user.lastname1 = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Lastname1 can't be blank")
+
+      end
+
+      it "お名前(全角)は、名前が必須であること " do
         @user.firstname1 = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Lastname1 can't be blank","Firstname1 can't be blank")
+        expect(@user.errors.full_messages).to include("Firstname1 can't be blank")
 
       end
 
       it "お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須であること " do
         @user.lastname1 = 'aaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Lastname1 is invalid")
+
+      end
+
+      it "お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須であること " do
         @user.firstname1 = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Lastname1 is invalid","Firstname1 is invalid")
+        expect(@user.errors.full_messages).to include("Firstname1 is invalid")
 
       end
 
@@ -103,7 +115,14 @@ RSpec.describe User, type: :model do
         @user.lastname2 = 'ﾃｽﾄ'
         @user.firstname2 = 'ﾃｽﾄ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Lastname2 is invalid", "Firstname2 is invalid")
+        expect(@user.errors.full_messages).to include("Lastname2 is invalid")
+
+      end
+
+      it "お名前カナ(全角)は、名字と名前がそれぞれ必須であること " do
+        @user.firstname2 = 'ﾃｽﾄ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Firstname2 is invalid")
 
       end
 
@@ -111,7 +130,15 @@ RSpec.describe User, type: :model do
         @user.lastname2 = ''
         @user.firstname2 = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Lastname2 is invalid","Firstname2 is invalid")
+        expect(@user.errors.full_messages).to include("Lastname2 is invalid")
+
+      end
+
+
+      it "お名前カナ(全角)は、全角（カタカナ）での入力が必須であること " do
+        @user.firstname2 = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Firstname2 is invalid")
 
       end
 
