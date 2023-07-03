@@ -113,7 +113,6 @@ RSpec.describe User, type: :model do
 
       it "お名前カナ(全角)は、名字と名前がそれぞれ必須であること " do
         @user.lastname2 = 'ﾃｽﾄ'
-        @user.firstname2 = 'ﾃｽﾄ'
         @user.valid?
         expect(@user.errors.full_messages).to include("Lastname2 is invalid")
 
