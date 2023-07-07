@@ -30,27 +30,27 @@ RSpec.describe Item, type: :model do
       end
       
       it 'カテゴリーに「---」が選択されている場合は出品できない' do
-        @item.genre_id = nil
+        @item.genre_id = 1
         expect(@item).not_to be_valid
       end
       
       it '商品の状態に「---」が選択されている場合は出品できない' do
-        @item.state_id = nil
+        @item.state_id = 1
         expect(@item).not_to be_valid
       end
       
       it '配送料の負担に「---」が選択されている場合は出品できない' do
-        @item.deriver_cost_id = nil
+        @item.deriver_cost_id = 1
         expect(@item).not_to be_valid
       end
       
       it '発送元の地域に「---」が選択されている場合は出品できない' do
-        @item.prefecture_id = nil
+        @item.prefecture_id = 1
         expect(@item).not_to be_valid
       end
       
       it '発送までの日数に「---」が選択されている場合は出品できない' do
-        @item.deriver_day_id = nil
+        @item.deriver_day_id = 1
         expect(@item).not_to be_valid
       end
       
