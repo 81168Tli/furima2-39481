@@ -17,12 +17,18 @@ class ItemsController < ApplicationController
       redirect_to '/'
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def show
+    @item = Item.find(params[:id])
+  end
 
         
-      end
+
     
     
-  end
+  
 
   private
   def item_params
