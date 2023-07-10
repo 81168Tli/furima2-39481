@@ -12,7 +12,7 @@ class User < ApplicationRecord
          validates :birth, presence: true
 
          validate :password_complexity
-
+         has_many :items
        
          private
        

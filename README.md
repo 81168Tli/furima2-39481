@@ -27,7 +27,7 @@
 | content             | text       | null: false   |
 | price               | integer    | null: false,  |
 | genre_id            | integer    | null: false, |
-| states_id           | integer    | null: false, |
+| state_id           | integer    | null: false, |
 | deriver_cost_id    | integer    | null: false, |
 | prefecture_id      | integer    | null: false, |
 | deriver_day_id     | integer    | null: false, |
