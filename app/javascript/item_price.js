@@ -9,7 +9,6 @@ const tax = 0.1
 
 priceInput.addEventListener("input", () => {
   const inputValue = priceInput.value
-  console.log(inputValue);
 })
 
 
