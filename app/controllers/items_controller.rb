@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
   def index
-    @items = Item.includes(:user).order(created_at: :desc)
+    @items = Item.includes(:user, :order).order(created_at: :desc)
   end
 
 
@@ -18,11 +18,19 @@ class ItemsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
 
-        
-      end
-    
-    
+    end
+
   end
+
+  def show
+    @item = Item.includes(:order).find(params[:id])
+  end
+
+        
+
+    
+    
+  
 
   private
   def item_params
