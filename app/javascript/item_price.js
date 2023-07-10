@@ -25,4 +25,3 @@ priceInput.addEventListener("input", () => {
 })
 
 
-
