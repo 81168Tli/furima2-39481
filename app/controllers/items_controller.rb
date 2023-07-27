@@ -2,6 +2,8 @@ class ItemsController < ApplicationController
   before_action :item_find, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :update]
   before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :check_order, only: [:edit]
+
 
 
   def index
@@ -62,6 +64,13 @@ end
       redirect_to root_path
     end
   end
+
+  def check_order
+    unless (@item.user_id == current_user.id || @item.order.nil? )
+      redirect_to root_path
+    end
+  end
+
 
 
 end
