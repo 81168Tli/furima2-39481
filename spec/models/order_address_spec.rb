@@ -9,14 +9,16 @@ RSpec.describe OrderAddress, type: :model do
 
   describe '情報の保存' do
     
-
     context '内容に問題ない場合' do
       it "すべての値が正しく入力されていれば保存できること" do
         expect(@order_address).to be_valid
-
       end
-    
+
+      it "建物名が空でも保存可能" do
+        @order_address.build_name = ''
+        expect(@order_address).to be_valid
     end
+  end
 
     context '内容に問題がある場合' do
       it "post_codeが空だと保存できないこと" do
@@ -33,18 +35,32 @@ RSpec.describe OrderAddress, type: :model do
 
       end
       it "s_numは空不可" do
-
         @order_address.s_num = ''
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("S num can't be blank")
 
       end
-      it "build_name空不可" do
-        @order_address.build_name = ''
+
+      it "post_codeは空不可" do
+        @order_address.post_code = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Build name can't be blank")
+        expect(@order_address.errors.full_messages).to include("Post code can't be blank")
+        end
+      it "post_codeはハイフン必須" do
+        @order_address.post_code = "1234567"
+        @order_address.valid?
+
+        expect(@order_address.errors.full_messages).to include("Post code is invalid")
 
       end
+
+      it "post_codeは数字7桁必須" do
+        @order_address.post_code = "123-456"
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Post code is invalid")
+
+      end
+
 
       it "tel空不可" do
         @order_address.tel = ''
@@ -53,7 +69,27 @@ RSpec.describe OrderAddress, type: :model do
 
       end
 
+      it "数字でない文字が含まれる場合は無効であること" do
+        @order_address.tel = "abc1234567"
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Tel is not a number")
+      end
 
+      it "12桁の電話番号なら無効であること" do
+        @order_address.tel = "090123456789"
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Tel is too long (maximum is 11 characters)")
+
+      end
+
+      it "9桁の電話番号なら無効であること" do
+        @order_address.tel = "012345678"
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Tel is too short (minimum is 10 characters)")
+      end
+
+
+      
 
       it "prefectureを選択していないと保存できないこと" do
           @order_address.prefecture_id = 1

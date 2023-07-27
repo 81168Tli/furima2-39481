@@ -2,12 +2,10 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :item_find, only: [:index, :create]
   before_action :check_owner, only: [:index]
-  before_action :check_order, only: [:index]
 
 
 
   def index
-    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @order_address = OrderAddress.new
   end
 
@@ -36,16 +34,12 @@ class OrdersController < ApplicationController
   
   
     def check_owner
-      if  user_signed_in? && current_user.id == @item.user_id
+      if (@item.user_id == current_user.id || !@item.order.nil? )
         redirect_to root_path
       end
     end
 
-    def check_order
-      if user_signed_in? && (@item.user_id == current_user.id || !@item.order.nil? )
-        redirect_to root_path
-      end
-    end
+
 
      def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
