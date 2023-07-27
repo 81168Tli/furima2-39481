@@ -66,8 +66,7 @@ end
   end
 
   def check_order
-    is_item_owner = @item.user_id == current_user.id
-    if (is_item_owner || (@item.order.nil? && is_item_owner))
+    unless (@item.user_id == current_user.id || @item.order.nil? )
       redirect_to root_path
     end
   end
