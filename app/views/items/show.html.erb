@@ -17,7 +17,6 @@
     <div class="item-price-box">
       <span class="item-price">
         ¥<%= @item.price %>
-
       </span>
       <span class="item-postage">
         <%= @item.deriver_cost.name %>
@@ -31,7 +30,7 @@
     <%= link_to "削除", item_path(@item), data: { turbo_method: :delete }, class:"item-destroy" %>
     
   
-    <% else current_user.id != @item.user_id %> %>
+    <% else current_user.id != @item.user_id %> 
     <%= link_to "購入画面に進む", item_orders_path(@item) ,data: { turbo: false}, class:"item-red-btn"%>
 
     <% end %>
