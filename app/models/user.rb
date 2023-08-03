@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          validates :nickname, presence: true
-         validates :lastname1, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/}
-         validates :firstname1, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/}
-         validates :lastname2, presence: true, format: { with: /\A[ァ-ヶー－]+\z/}
-         validates :firstname2, presence: true, format: { with: /\A[ァ-ヶー－]+\z/}
+         validates :lastname1, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, allow_blank: true}
+         validates :firstname1, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, allow_blank: true}
+         validates :lastname2, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, allow_blank: true}
+         validates :firstname2, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, allow_blank: true}
          validates :birth, presence: true
 
          validate :password_complexity

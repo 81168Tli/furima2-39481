@@ -1,0 +1,34 @@
+ja:
+   activemodel:
+    attributes:
+      order_address:
+       city: 市区町村
+       post_code: 郵便番号
+       s_num: 番地
+       tel: 電話番号
+       token:
+       prefecture_id: 都道府県
+   activerecord: 
+    attributes: 
+      user:
+        nickname: ニックネーム
+        lastname1: お名前（性）
+        firstname1: お名前（名）
+        lastname2: お名前（セイ）
+        firstname2: お名前（メイ）
+        birth: 生年月日
+      item:
+        name: 商品名
+        content: 商品の説明
+        price: 販売価格
+        image: 商品画像
+        genre_id: カテゴリー
+        state_id: 商品の状態
+        deriver_day_id: 発送までの日数
+        prefecture_id: 都道府県
+        deriver_cost_id: 配送料の負担
+        
+        
+
+
+

@@ -16,10 +16,10 @@ class Item < ApplicationRecord
 
 validates :name, presence: true
 validates :content, presence: true
-validates :price, presence: true,numericality: { greater_than_or_equal_to: 300,less_than_or_equal_to: 9_999_999,only_integer: true }
+validates :price, presence: true,numericality: { greater_than_or_equal_to: 300,less_than_or_equal_to: 9_999_999,only_integer: true, allow_blank: true }
 validates :image, presence: true
 
-validates :genre_id,:state_id,:deriver_day_id,:prefecture_id,:deriver_cost_id, numericality: { other_than: 1 , message: "can't be blank"}
+validates :genre_id,:state_id,:deriver_day_id,:prefecture_id,:deriver_cost_id, numericality: { other_than: 1 , message: "を選択してください"}
 
 
 
