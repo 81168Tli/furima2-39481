@@ -11,6 +11,16 @@
   min-width: 500px;
 }
 
+
+.preview-image {
+  height: 50vh;
+  width: 35vw;
+  min-height: 500px;
+  background-color: white;
+  object-fit: contain;
+  
+}
+
 .items-sell-header {
   padding: 5vh 0;
   text-align: center;

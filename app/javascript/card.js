@@ -1,5 +1,6 @@
 	
 const pay = () => {
+  console.log("card.jsが読み込まれました");
   const publicKey = gon.public_key
   const payjp = Payjp(publicKey) // PAY.JPテスト公開鍵  
   const elements = payjp.elements();
